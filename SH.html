@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#635bff">
+<title>Mi Portal | Evidencias Estudiantiles</title>
+<style>
+:root{--primary:#635bff;--purple:#8b5cf6;--cyan:#22c7d6;--pink:#ff6b9d;--orange:#ffad5c;--ink:#20213a;--muted:#777b95;--bg:#f5f6ff;--card:#fff;--line:#ececf5;--shadow:0 14px 40px rgba(45,42,110,.09)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}
+.hidden{display:none!important}
+.login-screen{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;background:#fff}
+.login-art{padding:clamp(30px,6vw,80px);color:white;background:radial-gradient(circle at 15% 15%,#a78bfa 0,transparent 32%),linear-gradient(145deg,#5146e5,#7c3aed 65%,#20b9c9);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
+.login-art:after{content:"";position:absolute;width:390px;height:390px;border:1px solid #ffffff35;border-radius:50%;right:-120px;bottom:-130px;box-shadow:0 0 0 45px #ffffff0d,0 0 0 90px #ffffff0a}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px;letter-spacing:.2px}.brand-mark{height:42px;width:42px;border-radius:14px;background:#ffffff25;display:grid;place-items:center;font-size:23px}
+.art-copy{max-width:550px;position:relative;z-index:1}.art-copy h1{font-size:clamp(36px,5vw,62px);line-height:1.06;margin:0 0 18px;letter-spacing:-2px}.art-copy p{font-size:17px;line-height:1.7;color:#eeeaff;max-width:460px}.art-pills{display:flex;gap:10px;flex-wrap:wrap}.art-pills span{border:1px solid #ffffff50;border-radius:30px;padding:9px 14px;font-size:13px;background:#ffffff12}
+.login-side{display:grid;place-items:center;padding:30px}.login-card{width:min(420px,100%)}.login-card h2{font-size:30px;margin:0 0 8px;letter-spacing:-.8px}.sub{color:var(--muted);margin:0 0 28px}.field{display:grid;gap:8px;margin:16px 0}.field label{font-size:13px;font-weight:700;color:#454761}.field input,.field textarea,.field select{width:100%;border:1px solid #e4e5f0;border-radius:13px;padding:14px 15px;background:#fbfbff;outline:none;color:var(--ink);transition:.2s}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px #635bff18}.primary-btn{background:linear-gradient(110deg,var(--primary),var(--purple));color:white;border-radius:13px;padding:14px 18px;font-weight:750;box-shadow:0 8px 18px #635bff30}.primary-btn:hover{filter:brightness(1.06);transform:translateY(-1px)}.full{width:100%}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin-top:16px}.error{color:#d83c65;font-size:13px;min-height:18px}
+.app{min-height:100vh}.topbar{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 4.5%;position:sticky;top:0;z-index:5}.top-left{display:flex;align-items:center;gap:12px}.top-left .brand-mark{background:linear-gradient(135deg,var(--primary),var(--purple));color:white}.top-left strong{font-size:17px}.top-left small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.profile{display:flex;align-items:center;gap:10px}.avatar{height:38px;width:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;background:linear-gradient(135deg,#ff8a9e,#8b5cf6)}.profile-text{font-size:13px;font-weight:700}.profile-text small{display:block;color:var(--muted);font-weight:500}.logout{background:#f3f2ff;color:#635bff;padding:10px 13px;border-radius:10px;font-weight:700;font-size:12px}
+.layout{max-width:1280px;margin:0 auto;padding:34px 4.5%;display:grid;grid-template-columns:235px 1fr;gap:28px}.sidebar{align-self:start;position:sticky;top:100px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:var(--shadow)}.nav-label{font-size:10px;letter-spacing:1.4px;font-weight:800;color:#a1a2b4;padding:12px 12px 8px}.nav-btn{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:12px;border-radius:12px;background:transparent;color:#686b85;font-size:13px;font-weight:650;margin:3px 0}.nav-btn .ico{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#f1f0ff;font-size:15px}.nav-btn.active{background:#f0efff;color:#554be5}.nav-btn.active .ico{background:#dedcff}.content{min-width:0}.welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:25px}.eyebrow{color:var(--primary);font-size:11px;font-weight:850;letter-spacing:1.5px;text-transform:uppercase}.welcome h1{font-size:clamp(25px,3vw,34px);letter-spacing:-1px;margin:7px 0}.welcome p{margin:0;color:var(--muted);font-size:14px}.date-chip{background:#fff;border:1px solid var(--line);padding:11px 14px;border-radius:12px;font-size:12px;color:#777b95;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:25px}.stat{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 5px 20px #37336c08;min-width:0}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;font-weight:650}.stat-icon{height:34px;width:34px;border-radius:11px;display:grid;place-items:center;font-size:17px}.stat strong{display:block;font-size:30px;letter-spacing:-1px;margin:12px 0 2px}.stat small{font-size:11px;color:#9a9caf}.c1{background:#eeedff}.c2{background:#e5fbf8}.c3{background:#fff0f5}.c4{background:#fff5e8}
+.panel{background:#fff;border:1px solid var(--line);border-radius:19px;padding:22px;box-shadow:0 5px 20px #37336c08;margin-bottom:20px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.panel-head h2{font-size:17px;margin:0}.panel-head p{font-size:12px;color:var(--muted);margin:5px 0 0}.section-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.section-card{border:1px solid var(--line);border-radius:16px;padding:17px;display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:.2s;background:#fff}.section-card:hover{border-color:#c9c5ff;transform:translateY(-2px);box-shadow:0 10px 22px #635bff12}.section-icon{height:45px;width:45px;border-radius:14px;display:grid;place-items:center;font-size:21px;flex:none}.section-card h3{font-size:14px;margin:2px 0 5px}.section-card p{font-size:11px;color:var(--muted);margin:0 0 9px;line-height:1.5}.section-card small{font-size:11px;color:var(--primary);font-weight:750}
+.activity-list{display:grid;gap:10px}.activity{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #f0f0f6;border-radius:13px}.activity-icon{height:37px;width:37px;border-radius:11px;background:#f2f0ff;display:grid;place-items:center}.activity-info{min-width:0;flex:1}.activity-info strong{font-size:13px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.activity-info small{font-size:11px;color:var(--muted)}.status{font-size:10px;font-weight:800;border-radius:20px;padding:6px 9px;background:#e8faf4;color:#14966e;white-space:nowrap}.empty{text-align:center;padding:30px 15px;color:var(--muted);font-size:13px}.empty b{display:block;font-size:26px;margin-bottom:8px}
+.section-view{display:none}.section-view.active{display:block}.back-btn{background:#f0efff;color:#5a51e8;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:750;margin-bottom:17px}.section-title-row{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}.section-title-row h1{font-size:27px;margin:5px 0}.section-title-row p{color:var(--muted);font-size:13px;margin:0}.item-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.item-card{border:1px solid var(--line);border-radius:15px;padding:17px}.item-card h3{font-size:14px;margin:0 0 7px}.item-card p{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 12px;white-space:pre-wrap}.item-meta{font-size:10px;color:#999bb0;display:flex;justify-content:space-between;gap:8px}.item-actions{display:flex;gap:8px;margin-top:14px}.small-btn{border-radius:9px;padding:8px 11px;font-size:11px;font-weight:750;background:#f0efff;color:#5b51e8}.delete-btn{background:#fff0f3;color:#d34d70}
+.modal-backdrop{position:fixed;inset:0;background:#17152c80;display:grid;place-items:center;padding:18px;z-index:20}.modal{width:min(480px,100%);background:white;border-radius:20px;padding:24px;box-shadow:0 25px 80px #17152c50}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}.modal-head h2{font-size:20px;margin:0}.close{background:#f2f2f8;border-radius:9px;height:32px;width:32px;font-size:18px;color:#777}.modal .field{margin:13px 0}.modal textarea{min-height:95px;resize:vertical}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.secondary-btn{padding:12px 15px;border-radius:11px;background:#f1f1f7;color:#62647b;font-weight:700}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#24233b;color:white;padding:12px 18px;border-radius:12px;font-size:13px;box-shadow:var(--shadow);z-index:40;opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1}
+.mobile-nav{display:none}
+@media(max-width:900px){.layout{grid-template-columns:1fr;padding-top:23px}.sidebar{position:static;display:flex;overflow-x:auto;gap:5px;padding:9px}.nav-label{display:none}.nav-btn{width:auto;flex:none;margin:0;padding:9px 11px}.nav-btn .ico{width:25px;height:25px}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.login-screen{grid-template-columns:1fr}.login-art{min-height:260px;padding:25px}.art-copy h1{font-size:35px}.art-copy p{font-size:13px;margin:10px 0 15px}.art-pills span{font-size:10px;padding:7px 10px}.login-side{padding:35px 23px;align-items:start}.topbar{height:64px;padding:0 17px}.top-left strong{font-size:14px}.top-left small{display:none}.profile-text{display:none}.logout{padding:9px;font-size:11px}.layout{padding:20px 15px 35px;gap:14px}.welcome{align-items:flex-start;flex-direction:column;margin-bottom:18px}.welcome h1{font-size:27px}.date-chip{font-size:11px}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:25px}.stat-top{font-size:10px}.stat-icon{height:29px;width:29px}.panel{padding:16px;border-radius:16px}.section-grid,.item-grid{grid-template-columns:1fr}.section-card{padding:14px}.section-title-row{align-items:flex-start;flex-direction:column}.section-title-row h1{font-size:24px}.section-title-row .primary-btn{width:100%}.activity{gap:9px}.status{font-size:9px;padding:5px 7px}}
+</style>
+</head>
+<body>
+<section id="loginScreen" class="login-screen">
+  <div class="login-art">
+    <div class="brand"><div class="brand-mark">✦</div> Mi Portal Estudiantil</div>
+    <div class="art-copy">
+      <h1>Todo tu esfuerzo,<br>en un solo lugar.</h1>
+      <p>Organiza tus actividades, proyectos y evidencias. Lleva el control de tu progreso académico de una forma sencilla.</p>
+      <div class="art-pills"><span>✦ Organiza</span><span>▣ Guarda evidencias</span><span>↗ Sigue tu avance</span></div>
+    </div>
+    <div style="font-size:12px;color:#e7e3ff;position:relative;z-index:1">Tu espacio para aprender y crecer.</div>
+  </div>
+  <div class="login-side">
+    <form class="login-card" id="loginForm">
+      <div class="eyebrow">Bienvenido de nuevo</div>
+      <h2>Inicia sesión</h2>
+      <p class="sub">Ingresa tus datos para entrar a tu portal.</p>
+      <div class="field"><label for="email">Correo electrónico</label><input id="email" type="email" placeholder="estudiante@correo.com" required autocomplete="username"></div>
+      <div class="field"><label for="password">Contraseña</label><input id="password" type="password" placeholder="Escribe tu contraseña" required autocomplete="current-password"></div>
+      <div class="error" id="loginError"></div>
+      <button class="primary-btn full" type="submit">Entrar a mi portal&nbsp; →</button>
+      <p class="hint">Los datos se guardan en este navegador.</p>
+    </form>
+  </div>
+</section>
+
+<div id="app" class="app hidden">
+  <header class="topbar">
+    <div class="top-left"><div class="brand-mark">✦</div><div><strong>Mi Portal Estudiantil</strong><small>Panel de evidencias</small></div></div>
+    <div class="profile"><div class="avatar" id="avatar">J</div><div class="profile-text"><span id="userName">Jose Angel Ibarra Villanueva</span><small id="userEmail">ji1323112@gmail.com</small></div><button class="logout" id="logoutBtn">↪ Salir</button></div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-label">MENÚ PRINCIPAL</div>
+      <button class="nav-btn active" data-page="dashboard"><span class="ico">⌂</span>Resumen</button>
+      <button class="nav-btn" data-page="academica"><span class="ico">📚</span>Formación académica</button>
+      <button class="nav-btn" data-page="extra"><span class="ico">🌟</span>Formación extracurricular</button>
+      <button class="nav-btn" data-page="proyectos"><span class="ico">💡</span>Proyectos</button>
+      <button class="nav-btn" data-page="evidencias"><span class="ico">📁</span>Evidencias</button>
+    </aside>
+    <main class="content">
+      <section id="dashboardPage">
+        <div class="welcome"><div><div class="eyebrow">Tu espacio de aprendizaje</div><h1>¡Hola, <span id="welcomeName">Jose</span>! 👋</h1><p>Este es el resumen de tu progreso hasta el momento.</p></div><div class="date-chip" id="today"></div></div>
+        <div class="stats">
+          <div class="stat"><div class="stat-top">Actividades <span class="stat-icon c1">📚</span></div><strong id="countActivities">0</strong><small>En formación académica</small></div>
+          <div class="stat"><div class="stat-top">Extracurriculares <span class="stat-icon c2">🌟</span></div><strong id="countExtra">0</strong><small>Actividades registradas</small></div>
+          <div class="stat"><div class="stat-top">Proyectos <span class="stat-icon c3">💡</span></div><strong id="countProjects">0</strong><small>Proyectos agregados</small></div>
+          <div class="stat"><div class="stat-top">Evidencias <span class="stat-icon c4">📁</span></div><strong id="countEvidence">0</strong><small>Archivos o enlaces registrados</small></div>
+        </div>
+        <div class="panel"><div class="panel-head"><div><h2>Mis secciones</h2><p>Selecciona una sección para consultar o agregar trabajos.</p></div></div>
+          <div class="section-grid">
+            <div class="section-card" data-open="academica"><div class="section-icon c1">📚</div><div><h3>Formación académica</h3><p>Materias, tareas, prácticas y actividades escolares.</p><small id="subAcademica">0 actividades registradas →</small></div></div>
+            <div class="section-card" data-open="extra"><div class="section-icon c2">🌟</div><div><h3>Formación extracurricular</h3><p>Cursos, talleres, deportes y otras experiencias.</p><small id="subExtra">0 actividades registradas →</small></div></div>
+            <div class="section-card" data-open="proyectos"><div class="section-icon c3">💡</div><div><h3>Proyectos</h3><p>Guarda tus proyectos individuales o en equipo.</p><small id="subProyectos">0 proyectos registrados →</small></div></div>
+            <div class="section-card" data-open="evidencias"><div class="section-icon c4">📁</div><div><h3>Evidencias</h3><p>Registra documentos, imágenes y enlaces de tus trabajos.</p><small id="subEvidencias">0 evidencias registradas →</small></div></div>
+          </div>
+        </div>
+        <div class="panel"><div class="panel-head"><div><h2>Actividad reciente</h2><p>Tus últimos registros agregados.</p></div></div><div id="recentList" class="activity-list"></div></div>
+      </section>
+
+      <section id="sectionPage" class="section-view">
+        <button class="back-btn" id="backBtn">← Volver al resumen</button>
+        <div class="section-title-row"><div><div class="eyebrow">Mi portal / Secciones</div><h1 id="sectionHeading">Formación académica</h1><p id="sectionDescription"></p></div><button class="primary-btn" id="addBtn">＋ Agregar trabajo</button></div>
+        <div class="panel"><div class="panel-head"><div><h2 id="listHeading">Mis registros</h2><p>Consulta los detalles o elimina registros que ya no necesites.</p></div><span class="date-chip" id="sectionCount">0 registros</span></div><div id="itemsList" class="item-grid"></div></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div id="modalBackdrop" class="modal-backdrop hidden">
+  <form class="modal" id="itemForm">
+    <div class="modal-head"><h2 id="modalTitle">Agregar trabajo</h2><button type="button" class="close" id="closeModal">×</button></div>
+    <p class="sub" style="font-size:12px;margin:6px 0 15px">Completa los datos para guardar un nuevo registro.</p>
+    <div class="field"><label for="itemTitle">Nombre del trabajo o actividad *</label><input id="itemTitle" maxlength="90" placeholder="Ej. Investigación de bases de datos" required></div>
+    <div class="field"><label for="itemDescription">Descripción</label><textarea id="itemDescription" placeholder="Agrega una breve descripción..."></textarea></div>
+    <div class="field"><label for="itemDate">Fecha</label><input id="itemDate" type="date"></div>
+    <div class="field"><label for="itemLink">Enlace o ubicación de evidencia (opcional)</label><input id="itemLink" type="text" placeholder="https://... o nombre del archivo"></div>
+    <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelModal">Cancelar</button><button type="submit" class="primary-btn">Guardar registro</button></div>
+  </form>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const STORAGE_KEY = "miPortalEvidencias_v1";
+const sections = {
+  academica:{title:"Formación académica",desc:"Organiza tus materias, tareas, prácticas y actividades escolares.",icon:"📚",plural:"actividades"},
+  extra:{title:"Formación extracurricular",desc:"Registra cursos, talleres, deportes y experiencias fuera del aula.",icon:"🌟",plural:"actividades"},
+  proyectos:{title:"Proyectos",desc:"Lleva el seguimiento de tus proyectos individuales o en equipo.",icon:"💡",plural:"proyectos"},
+  evidencias:{title:"Evidencias",desc:"Reúne referencias, documentos y enlaces que demuestran tu trabajo.",icon:"📁",plural:"evidencias"}
+};
+let currentSection = "academica";
+let records = loadRecords();
+let currentUser = null;
+function loadRecords(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{}}catch(e){return {}}}
+function saveRecords(){localStorage.setItem(STORAGE_KEY,JSON.stringify(records))}
+function userKey(){return currentUser?.email?.toLowerCase()||"demo"}
+function userRecords(){if(!records[userKey()])records[userKey()]={academica:[],extra:[],proyectos:[],evidencias:[]};return records[userKey()]}
+function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(message){const el=document.getElementById("toast");el.textContent=message;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2300)}
+function showApp(email){
+  currentUser={email};
+  const isJose = email.toLowerCase() === "ji1323112@gmail.com";
+  const fallbackName = email.split("@")[0].replace(/[._-]/g," ");
+  const pretty = isJose ? "Jose Angel Ibarra Villanueva" : (fallbackName.charAt(0).toUpperCase() + fallbackName.slice(1));
+  document.getElementById("userName").textContent=pretty;
+  document.getElementById("welcomeName").textContent=pretty.split(" ")[0];
+  document.getElementById("userEmail").textContent=email;
+  document.getElementById("avatar").textContent=pretty.charAt(0).toUpperCase();
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("today").textContent=new Date().toLocaleDateString("es-MX",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  renderDashboard();
+  showPage("dashboard");
+}
+document.getElementById("loginForm").addEventListener("submit",e=>{e.preventDefault();const email=document.getElementById("email").value.trim().toLowerCase(),pass=document.getElementById("password").value;document.getElementById("loginError").textContent="";if(email==="ji1323112@gmail.com"&&pass==="Tuto1589"){showApp(email)}else{document.getElementById("loginError").textContent="Correo o contraseña incorrectos."}});
+document.getElementById("logoutBtn").addEventListener("click",()=>{currentUser=null;document.getElementById("app").classList.add("hidden");document.getElementById("loginScreen").classList.remove("hidden");document.getElementById("password").value=""});
+function showPage(page){document.getElementById("dashboardPage").classList.toggle("hidden",page!=="dashboard");document.getElementById("sectionPage").classList.toggle("active",page!=="dashboard");document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===page));if(page!=="dashboard"){currentSection=page;renderSection()}}
+document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.querySelectorAll("[data-open]").forEach(c=>c.addEventListener("click",()=>showPage(c.dataset.open)));
+document.getElementById("backBtn").addEventListener("click",()=>showPage("dashboard"));
+function renderDashboard(){const data=userRecords();const counts={};Object.keys(sections).forEach(k=>counts[k]=data[k]?.length||0);document.getElementById("countActivities").textContent=counts.academica;document.getElementById("countExtra").textContent=counts.extra;document.getElementById("countProjects").textContent=counts.proyectos;document.getElementById("countEvidence").textContent=counts.evidencias;document.getElementById("subAcademica").textContent=counts.academica+" actividades registradas →";document.getElementById("subExtra").textContent=counts.extra+" actividades registradas →";document.getElementById("subProyectos").textContent=counts.proyectos+" proyectos registrados →";document.getElementById("subEvidencias").textContent=counts.evidencias+" evidencias registradas →";let all=[];Object.keys(sections).forEach(k=>(data[k]||[]).forEach(r=>all.push({...r,section:k})));all.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));const list=document.getElementById("recentList");if(!all.length){list.innerHTML='<div class="empty"><b>🗂️</b>Aún no tienes registros.<br>Entra a una sección y agrega tu primer trabajo.</div>';return}list.innerHTML=all.slice(0,5).map(r=>`<div class="activity"><div class="activity-icon">${sections[r.section].icon}</div><div class="activity-info"><strong>${escapeHTML(r.title)}</strong><small>${sections[r.section].title} · ${escapeHTML(r.date||"Sin fecha")}</small></div><span class="status">Guardado</span></div>`).join("")}
+function renderSection(){const info=sections[currentSection],items=userRecords()[currentSection]||[];document.getElementById("sectionHeading").textContent=info.title;document.getElementById("sectionDescription").textContent=info.desc;document.getElementById("listHeading").textContent="Mis "+info.plural;document.getElementById("sectionCount").textContent=items.length+" registros";const list=document.getElementById("itemsList");if(!items.length){list.innerHTML='<div class="empty" style="grid-column:1/-1"><b>'+info.icon+'</b>No hay registros en esta sección todavía.<br>Presiona “Agregar trabajo” para comenzar.</div>';return}list.innerHTML=items.map(r=>`<article class="item-card"><h3>${escapeHTML(r.title)}</h3><p>${escapeHTML(r.description||"Sin descripción")}</p><div class="item-meta"><span>📅 ${escapeHTML(r.date||"Sin fecha")}</span><span>${r.link?"🔗 Con enlace":"Registro guardado"}</span></div>${r.link?`<div style="margin-top:10px;word-break:break-all;font-size:11px;color:#6258e8">${escapeHTML(r.link)}</div>`:""}<div class="item-actions"><button class="small-btn delete-btn" data-delete="${r.id}">Eliminar</button></div></article>`).join("");list.querySelectorAll("[data-delete]").forEach(btn=>btn.addEventListener("click",()=>deleteRecord(btn.dataset.delete)))}
+function openModal(){document.getElementById("itemForm").reset();document.getElementById("itemDate").value=new Date().toISOString().slice(0,10);document.getElementById("modalTitle").textContent="Agregar a "+sections[currentSection].title;document.getElementById("modalBackdrop").classList.remove("hidden");document.getElementById("itemTitle").focus()}
+function closeModal(){document.getElementById("modalBackdrop").classList.add("hidden")}
+document.getElementById("addBtn").addEventListener("click",openModal);document.getElementById("closeModal").addEventListener("click",closeModal);document.getElementById("cancelModal").addEventListener("click",closeModal);
+document.getElementById("itemForm").addEventListener("submit",e=>{e.preventDefault();const title=document.getElementById("itemTitle").value.trim();if(!title)return;const item={id:Date.now().toString(),title,description:document.getElementById("itemDescription").value.trim(),date:document.getElementById("itemDate").value,link:document.getElementById("itemLink").value.trim(),createdAt:Date.now()};userRecords()[currentSection].unshift(item);saveRecords();closeModal();renderSection();renderDashboard();toast("¡Registro guardado correctamente!")});
+function deleteRecord(id){if(!confirm("¿Seguro que deseas eliminar este registro?"))return;userRecords()[currentSection]=userRecords()[currentSection].filter(r=>r.id!==id);saveRecords();renderSection();renderDashboard();toast("Registro eliminado")}
+document.getElementById("modalBackdrop").addEventListener("click",e=>{if(e.target.id==="modalBackdrop")closeModal()});
+</script>
+</body>
+</html>
